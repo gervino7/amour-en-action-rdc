@@ -39,6 +39,17 @@ export default {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
         },
+        success: {
+          DEFAULT: "hsl(var(--success))",
+          foreground: "hsl(var(--success-foreground))",
+        },
+        "hero-gradient": "var(--hero-gradient)",
+        "section-background": "hsl(var(--section-background))",
+        "warm-accent": "hsl(var(--warm-accent))",
+        "trust-blue": "hsl(var(--trust-blue))",
+        "hope-green": "hsl(var(--hope-green))",
+        "neutral-100": "hsl(var(--neutral-100))",
+        "neutral-200": "hsl(var(--neutral-200))",
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
