@@ -43,7 +43,10 @@ INSTRUCTIONS:
 - Français uniquement
 - Ton chaleureux mais concis
 - Si pas d'info: diriger vers WhatsApp +2250506803113
-- Encourager donations/bénévolat sans insister`;
+- Encourager donations/bénévolat sans insister
+- Si l'utilisateur exprime un intérêt pour donner ou soutenir financièrement: mentionner "don" ou "donation" dans ta réponse
+- Si l'utilisateur veut nous contacter ou avoir des infos de contact: mentionner "contact" dans ta réponse
+- Répondre de manière naturelle en incluant ces mots-clés quand approprié`;
 
     const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',

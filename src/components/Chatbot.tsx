@@ -78,6 +78,20 @@ const Chatbot = () => {
       };
 
       setMessages(prev => [...prev, botMessage]);
+      
+      // Détecter si des actions sont nécessaires
+      const actions = detectActionNeeded(data.message);
+      if (actions.needsDonation || actions.needsContact) {
+        setTimeout(() => {
+          const actionMessage: Message = {
+            id: (Date.now() + 2).toString(),
+            content: 'ACTIONS_SUGGESTED',
+            isBot: true,
+            timestamp: new Date()
+          };
+          setMessages(prev => [...prev, actionMessage]);
+        }, 1000);
+      }
     } catch (error) {
       console.error('Error sending message:', error);
       toast({
@@ -101,6 +115,29 @@ const Chatbot = () => {
     const message = encodeURIComponent("Bonjour ! Je souhaite en savoir plus sur les activités de l'ONG Amour en Manifestation et comment je peux contribuer à votre noble mission humanitaire. Merci !");
     const whatsappUrl = `https://wa.me/2250506803113?text=${message}`;
     window.open(whatsappUrl, '_blank');
+  };
+
+  const redirectToDonation = () => {
+    window.location.href = '/donation';
+  };
+
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsOpen(false); // Fermer le chatbot après redirection
+  };
+
+  const detectActionNeeded = (messageContent: string) => {
+    const lowerContent = messageContent.toLowerCase();
+    const donationKeywords = ['don', 'donner', 'soutenir', 'aider financièrement', 'contribuer', 'donation'];
+    const contactKeywords = ['contact', 'joindre', 'téléphone', 'email', 'adresse', 'parler'];
+    
+    return {
+      needsDonation: donationKeywords.some(keyword => lowerContent.includes(keyword)),
+      needsContact: contactKeywords.some(keyword => lowerContent.includes(keyword))
+    };
   };
 
   if (!isOpen) {
@@ -170,24 +207,58 @@ const Chatbot = () => {
                       key={message.id}
                       className={`flex ${message.isBot ? 'justify-start' : 'justify-end'} animate-fade-in`}
                     >
-                      <div
-                        className={`max-w-[80%] rounded-2xl px-4 py-3 shadow-lg ${
-                          message.isBot
-                            ? 'bg-gradient-to-r from-gray-100 to-gray-50 text-gray-800 border border-gray-200'
-                            : 'bg-gradient-to-r from-primary to-accent text-white'
-                        }`}
-                      >
-                        <div className="flex items-start space-x-2">
-                          {message.isBot ? (
-                            <Bot className="h-5 w-5 mt-0.5 text-primary" />
-                          ) : (
-                            <User className="h-5 w-5 mt-0.5" />
-                          )}
-                          <p className="text-sm leading-relaxed whitespace-pre-wrap">
-                            {message.content}
-                          </p>
+                      {message.content === 'ACTIONS_SUGGESTED' ? (
+                        // Boutons d'action rapide
+                        <div className="w-full space-y-2">
+                          <p className="text-sm text-gray-600 text-center mb-3">🎯 Actions rapides :</p>
+                          <div className="flex flex-col space-y-2">
+                            <Button
+                              onClick={redirectToDonation}
+                              className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white flex items-center justify-center space-x-2 transition-all duration-200 hover:scale-105"
+                              size="sm"
+                            >
+                              <Heart className="h-4 w-4" />
+                              <span>Faire un don</span>
+                            </Button>
+                            <Button
+                              onClick={scrollToContact}
+                              variant="outline"
+                              className="border-primary text-primary hover:bg-primary hover:text-white flex items-center justify-center space-x-2 transition-all duration-200"
+                              size="sm"
+                            >
+                              <Phone className="h-4 w-4" />
+                              <span>Nous contacter</span>
+                            </Button>
+                            <Button
+                              onClick={openWhatsApp}
+                              className="bg-gradient-to-r from-green-400 to-green-500 hover:from-green-500 hover:to-green-600 text-white flex items-center justify-center space-x-2 transition-all duration-200"
+                              size="sm"
+                            >
+                              <Phone className="h-4 w-4" />
+                              <span>WhatsApp</span>
+                            </Button>
+                          </div>
                         </div>
-                      </div>
+                      ) : (
+                        <div
+                          className={`max-w-[80%] rounded-2xl px-4 py-3 shadow-lg ${
+                            message.isBot
+                              ? 'bg-gradient-to-r from-gray-100 to-gray-50 text-gray-800 border border-gray-200'
+                              : 'bg-gradient-to-r from-primary to-accent text-white'
+                          }`}
+                        >
+                          <div className="flex items-start space-x-2">
+                            {message.isBot ? (
+                              <Bot className="h-5 w-5 mt-0.5 text-primary" />
+                            ) : (
+                              <User className="h-5 w-5 mt-0.5" />
+                            )}
+                            <p className="text-sm leading-relaxed whitespace-pre-wrap">
+                              {message.content}
+                            </p>
+                          </div>
+                        </div>
+                      )}
                     </div>
                   ))}
                   {isLoading && (
