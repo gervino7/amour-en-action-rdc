@@ -16,9 +16,19 @@ serve(async (req) => {
     const { message } = await req.json();
     
     const anthropicApiKey = Deno.env.get('ANTHROPIC_API_KEY');
+    console.log('API Key présente:', !!anthropicApiKey);
+    console.log('API Key longueur:', anthropicApiKey?.length);
+    console.log('API Key début:', anthropicApiKey?.substring(0, 10));
+    
     if (!anthropicApiKey) {
       throw new Error('ANTHROPIC_API_KEY is not configured');
     }
+
+    // Nettoyer la clé API de tout espace supplémentaire
+    const cleanApiKey = anthropicApiKey.trim();
+    
+    console.log('Message reçu:', message);
+    console.log('Clé API nettoyée longueur:', cleanApiKey.length);
 
     const systemPrompt = `Tu es l'assistant virtuel officiel de l'ONG Amour en Manifestation (ONG-AEM), une organisation humanitaire dédiée à l'assistance aux populations les plus vulnérables de la République Démocratique du Congo.
 
@@ -81,7 +91,7 @@ INSTRUCTIONS DE RÉPONSE :
     const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${anthropicApiKey}`,
+        'Authorization': `Bearer ${cleanApiKey}`,
         'Content-Type': 'application/json',
         'anthropic-version': '2023-06-01'
       },
@@ -98,12 +108,17 @@ INSTRUCTIONS DE RÉPONSE :
       })
     });
 
+    console.log('Status de la réponse Anthropic:', response.status);
+    console.log('Headers de réponse:', Object.fromEntries(response.headers.entries()));
+
     if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(`Anthropic API error: ${errorData.error?.message || 'Unknown error'}`);
+      const errorText = await response.text();
+      console.error('Erreur API Anthropic:', errorText);
+      throw new Error(`Anthropic API error: ${errorText}`);
     }
 
     const data = await response.json();
+    console.log('Données reçues de Anthropic:', JSON.stringify(data, null, 2));
     const botMessage = data.content[0].text;
 
     return new Response(JSON.stringify({ 
