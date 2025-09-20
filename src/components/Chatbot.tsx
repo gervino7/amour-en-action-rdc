@@ -31,7 +31,7 @@ const Chatbot = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      content: '🌟 Bonjour ! Je suis l\'assistant virtuel de l\'ONG Amour en Manifestation. Comment puis-je vous aider aujourd\'hui ? Vous pouvez me poser des questions sur nos programmes humanitaires, nos formations gratuites, ou tout autre aspect de notre mission en RDC ! ❤️',
+      content: '👋 Bonjour ! Je suis l\'assistant ONG-AEM. Comment puis-je vous aider avec nos programmes humanitaires en RDC ?',
       isBot: true,
       timestamp: new Date()
     }
@@ -134,7 +134,7 @@ const Chatbot = () => {
   return (
     <div className="fixed bottom-6 right-6 z-50">
       <Card className={`bg-white/95 backdrop-blur-xl border-2 border-primary/20 shadow-2xl transition-all duration-500 ${
-        isMinimized ? 'w-80 h-16' : 'w-96 h-[600px]'
+        isMinimized ? 'w-72 h-14' : 'w-80 h-96'
       }`}>
         {/* Header */}
         <div className="relative bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%] animate-[gradient-x_4s_ease-in-out_infinite] text-white p-4 rounded-t-lg">
@@ -174,7 +174,7 @@ const Chatbot = () => {
         {!isMinimized && (
           <>
             {/* Messages */}
-            <CardContent className="p-0 h-[420px] flex flex-col">
+            <CardContent className="p-0 h-72 flex flex-col">
               <ScrollArea className="flex-1 p-4">
                 <div className="space-y-4">
                   {messages.map((message) => (
