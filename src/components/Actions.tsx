@@ -1,9 +1,10 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Heart, GraduationCap, Stethoscope, ArrowRight } from "lucide-react";
-import aidDistribution from "@/assets/aid-distribution.jpg";
-import educationProgram from "@/assets/education-program.jpg";
+import foodDistribution from "@/assets/food-distribution.jpg";
+import communitySupport from "@/assets/community-support.jpg";
 import medicalCare from "@/assets/medical-care.jpg";
+import formationsGratuites from "@/assets/formations-gratuites.jpg";
 
 const Actions = () => {
   return (
@@ -19,12 +20,12 @@ const Actions = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-8 mb-16">
           <Card className="overflow-hidden hover:shadow-lg transition-shadow group">
             <div className="relative h-48 overflow-hidden">
               <img 
-                src={aidDistribution} 
-                alt="Distribution d'aide alimentaire"
+                src={foodDistribution} 
+                alt="Distribution d'aide alimentaire par l'équipe ONG-AEM"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
@@ -36,7 +37,7 @@ const Actions = () => {
               <h3 className="text-xl font-semibold mb-3 text-primary">Assistance Alimentaire</h3>
               <p className="text-muted-foreground mb-4 leading-relaxed">
                 Distribution de vivres et soutien nutritionnel aux familles les plus vulnérables. 
-                Nous fournissons des denrées de base et organisons des programmes de nutrition.
+                Nous fournissons des denrées de base essentielles.
               </p>
               <Button variant="outline" size="sm" className="w-full">
                 En savoir plus
@@ -48,8 +49,8 @@ const Actions = () => {
           <Card className="overflow-hidden hover:shadow-lg transition-shadow group">
             <div className="relative h-48 overflow-hidden">
               <img 
-                src={educationProgram} 
-                alt="Programme éducatif"
+                src={formationsGratuites} 
+                alt="Formations gratuites offertes par Rita KABUNDI"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
@@ -58,10 +59,35 @@ const Actions = () => {
               </div>
             </div>
             <CardContent className="p-6">
-              <h3 className="text-xl font-semibold mb-3 text-primary">Éducation et Formation</h3>
+              <h3 className="text-xl font-semibold mb-3 text-primary">Formations Gratuites</h3>
               <p className="text-muted-foreground mb-4 leading-relaxed">
-                Programmes éducatifs pour enfants et adultes, formation professionnelle 
-                et alphabétisation pour favoriser le développement communautaire durable.
+                Conduite automobile, esthétique, photographie, montage vidéo, secrétariat 
+                et gestion de projets pour l'autonomisation des jeunes.
+              </p>
+              <Button variant="outline" size="sm" className="w-full">
+                En savoir plus
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </CardContent>
+          </Card>
+
+          <Card className="overflow-hidden hover:shadow-lg transition-shadow group">
+            <div className="relative h-48 overflow-hidden">
+              <img 
+                src={communitySupport} 
+                alt="Soutien communautaire aux personnes avec albinisme"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+              <div className="absolute bottom-4 left-4">
+                <Heart className="h-8 w-8 text-white" />
+              </div>
+            </div>
+            <CardContent className="p-6">
+              <h3 className="text-xl font-semibold mb-3 text-primary">Soutien Communautaire</h3>
+              <p className="text-muted-foreground mb-4 leading-relaxed">
+                Accompagnement et soutien aux personnes avec albinisme et aux familles 
+                marginalisées pour favoriser leur inclusion sociale.
               </p>
               <Button variant="outline" size="sm" className="w-full">
                 En savoir plus
@@ -74,7 +100,7 @@ const Actions = () => {
             <div className="relative h-48 overflow-hidden">
               <img 
                 src={medicalCare} 
-                alt="Soins médicaux"
+                alt="Soins médicaux et assistance sanitaire"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
@@ -85,8 +111,8 @@ const Actions = () => {
             <CardContent className="p-6">
               <h3 className="text-xl font-semibold mb-3 text-primary">Soins de Santé</h3>
               <p className="text-muted-foreground mb-4 leading-relaxed">
-                Accès aux soins médicaux essentiels, campagnes de vaccination, 
-                prévention sanitaire et sensibilisation aux bonnes pratiques d'hygiène.
+                Visites médicales, soins aux enfants et sensibilisation aux bonnes 
+                pratiques d'hygiène dans les communautés.
               </p>
               <Button variant="outline" size="sm" className="w-full">
                 En savoir plus
