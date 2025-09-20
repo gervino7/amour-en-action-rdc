@@ -220,21 +220,9 @@ const Chatbot = () => {
                 <div ref={messagesEndRef} />
               </ScrollArea>
 
-              {/* WhatsApp Contact */}
-              <div className="px-4 py-2 border-t border-gray-100">
-                <Button
-                  onClick={openWhatsApp}
-                  variant="outline"
-                  size="sm"
-                  className="w-full bg-green-50 border-green-200 text-green-700 hover:bg-green-100 transition-colors"
-                >
-                  <Phone className="h-4 w-4 mr-2" />
-                  Parler avec une personne - WhatsApp
-                </Button>
-              </div>
 
               {/* Input */}
-              <div className="p-4 border-t border-gray-100">
+              <div className="p-4">
                 <div className="flex space-x-2">
                   <Input
                     value={inputMessage}
