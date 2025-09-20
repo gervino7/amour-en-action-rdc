@@ -15,20 +15,20 @@ serve(async (req) => {
   try {
     const { message } = await req.json();
     
-    const anthropicApiKey = Deno.env.get('ANTHROPIC_API_KEY');
-    console.log('API Key présente:', !!anthropicApiKey);
-    console.log('API Key longueur:', anthropicApiKey?.length);
-    console.log('API Key début:', anthropicApiKey?.substring(0, 10));
+    const openaiApiKey = Deno.env.get('OPENAI_API_KEY');
+    console.log('OpenAI API Key présente:', !!openaiApiKey);
+    console.log('OpenAI API Key longueur:', openaiApiKey?.length);
+    console.log('OpenAI API Key début:', openaiApiKey?.substring(0, 10));
     
-    if (!anthropicApiKey) {
-      throw new Error('ANTHROPIC_API_KEY is not configured');
+    if (!openaiApiKey) {
+      throw new Error('OPENAI_API_KEY is not configured');
     }
 
     // Nettoyer la clé API de tout espace supplémentaire
-    const cleanApiKey = anthropicApiKey.trim();
+    const cleanApiKey = openaiApiKey.trim();
     
     console.log('Message reçu:', message);
-    console.log('Clé API nettoyée longueur:', cleanApiKey.length);
+    console.log('Clé OpenAI nettoyée longueur:', cleanApiKey.length);
 
     const systemPrompt = `Tu es l'assistant de l'ONG-AEM (Amour en Manifestation), ONG humanitaire en RDC créée en septembre 2024, basée à Montréal.
 
@@ -65,17 +65,17 @@ INSTRUCTIONS:
       })
     });
 
-    console.log('Status de la réponse Anthropic:', response.status);
+    console.log('Status de la réponse OpenAI:', response.status);
     console.log('Headers de réponse:', Object.fromEntries(response.headers.entries()));
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error('Erreur API Anthropic:', errorText);
-      throw new Error(`Anthropic API error: ${errorText}`);
+      console.error('Erreur API OpenAI:', errorText);
+      throw new Error(`OpenAI API error: ${errorText}`);
     }
 
     const data = await response.json();
-    console.log('Données reçues de Anthropic:', JSON.stringify(data, null, 2));
+    console.log('Données reçues de OpenAI:', JSON.stringify(data, null, 2));
     const botMessage = data.content[0].text;
 
     return new Response(JSON.stringify({ 
@@ -86,7 +86,7 @@ INSTRUCTIONS:
     });
 
   } catch (error) {
-    console.error('Error in chatbot function:', error);
+    console.error('Error in OpenAI chatbot function:', error);
     return new Response(JSON.stringify({ 
       error: error.message,
       success: false 

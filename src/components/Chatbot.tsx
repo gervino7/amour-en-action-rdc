@@ -64,7 +64,7 @@ const Chatbot = () => {
     setIsLoading(true);
 
     try {
-      const { data, error } = await supabase.functions.invoke('chatbot-anthropic', {
+      const { data, error } = await supabase.functions.invoke('chatbot-openai', {
         body: { message: inputMessage }
       });
 
