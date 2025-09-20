@@ -1,11 +1,12 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import About from "@/components/About";
+import MissionVision from "@/components/MissionVision";
+import Team from "@/components/Team";
 import Actions from "@/components/Actions";
+import Partners from "@/components/Partners";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import Chatbot from "@/components/Chatbot";
-import WhatsAppButton from "@/components/WhatsAppButton";
 
 const Index = () => {
   return (
@@ -13,8 +14,10 @@ const Index = () => {
       <Header />
       <main>
         <Hero />
-        <About />
+        <MissionVision />
+        <Team />
         <Actions />
+        <Partners />
         <Contact />
       </main>
       <Footer />

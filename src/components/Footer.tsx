@@ -39,10 +39,18 @@ const Footer = () => {
               </li>
               <li>
                 <a 
-                  href="#a-propos" 
+                  href="#mission-vision" 
                   className="text-primary-foreground/80 hover:text-accent transition-colors"
                 >
-                  À propos
+                  Mission & Vision
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="#equipe" 
+                  className="text-primary-foreground/80 hover:text-accent transition-colors"
+                >
+                  Équipe
                 </a>
               </li>
               <li>
@@ -50,7 +58,15 @@ const Footer = () => {
                   href="#nos-actions" 
                   className="text-primary-foreground/80 hover:text-accent transition-colors"
                 >
-                  Nos actions
+                  Projets
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="#partenaires" 
+                  className="text-primary-foreground/80 hover:text-accent transition-colors"
+                >
+                  Partenaires
                 </a>
               </li>
               <li>
@@ -105,6 +121,21 @@ const Footer = () => {
           <p className="text-primary-foreground/60 text-sm">
             © {currentYear} ONG Amour en Manifestation. Tous droits réservés.
           </p>
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mt-3">
+            <a 
+              href="/donation" 
+              className="text-primary-foreground/40 hover:text-accent text-xs transition-colors"
+            >
+              Faire un don
+            </a>
+            <span className="text-primary-foreground/20 hidden sm:inline">•</span>
+            <a 
+              href="/mentions-legales" 
+              className="text-primary-foreground/40 hover:text-accent text-xs transition-colors"
+            >
+              Mentions légales
+            </a>
+          </div>
           <p className="text-primary-foreground/40 text-xs mt-2">
             Organisation non gouvernementale • Assistance humanitaire • RDC
           </p>

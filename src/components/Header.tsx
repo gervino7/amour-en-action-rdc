@@ -42,16 +42,28 @@ const Header = () => {
               Accueil
             </button>
             <button 
-              onClick={() => scrollToSection('a-propos')}
+              onClick={() => scrollToSection('mission-vision')}
               className="text-foreground hover:text-primary transition-colors"
             >
-              À propos
+              Mission & Vision
+            </button>
+            <button 
+              onClick={() => scrollToSection('equipe')}
+              className="text-foreground hover:text-primary transition-colors"
+            >
+              Équipe
             </button>
             <button 
               onClick={() => scrollToSection('nos-actions')}
               className="text-foreground hover:text-primary transition-colors"
             >
-              Nos actions
+              Projets
+            </button>
+            <button 
+              onClick={() => scrollToSection('partenaires')}
+              className="text-foreground hover:text-primary transition-colors"
+            >
+              Partenaires
             </button>
             <button 
               onClick={() => scrollToSection('contact')}
@@ -88,16 +100,28 @@ const Header = () => {
                 Accueil
               </button>
               <button 
-                onClick={() => scrollToSection('a-propos')}
+                onClick={() => scrollToSection('mission-vision')}
                 className="text-left text-foreground hover:text-primary transition-colors"
               >
-                À propos
+                Mission & Vision
+              </button>
+              <button 
+                onClick={() => scrollToSection('equipe')}
+                className="text-left text-foreground hover:text-primary transition-colors"
+              >
+                Équipe
               </button>
               <button 
                 onClick={() => scrollToSection('nos-actions')}
                 className="text-left text-foreground hover:text-primary transition-colors"
               >
-                Nos actions
+                Projets
+              </button>
+              <button 
+                onClick={() => scrollToSection('partenaires')}
+                className="text-left text-foreground hover:text-primary transition-colors"
+              >
+                Partenaires
               </button>
               <button 
                 onClick={() => scrollToSection('contact')}
