@@ -5,3 +5,6 @@ verify_jwt = false
 
 [functions.verify-donation]
 verify_jwt = false
+
+[functions.chatbot-anthropic]
+verify_jwt = false

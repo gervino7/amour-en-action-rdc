@@ -117,6 +117,14 @@ export default {
         "pulse-glow": {
           "0%, 100%": { boxShadow: "0 0 20px hsl(var(--warm-accent) / 0.3)" },
           "50%": { boxShadow: "0 0 40px hsl(var(--warm-accent) / 0.6)" }
+        },
+        "gradient-x": {
+          "0%, 100%": {
+            "background-position": "0% 50%"
+          },
+          "50%": {
+            "background-position": "100% 50%"
+          }
         }
       },
       animation: {
