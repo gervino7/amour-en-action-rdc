@@ -59,7 +59,11 @@ const Header = () => {
             >
               Contact
             </button>
-            <Button variant="default" size="sm">
+            <Button 
+              variant="default" 
+              size="sm"
+              onClick={() => window.location.href = '/don'}
+            >
               Faire un don
             </Button>
           </nav>
@@ -101,7 +105,12 @@ const Header = () => {
               >
                 Contact
               </button>
-              <Button variant="default" size="sm" className="w-full">
+              <Button 
+                variant="default" 
+                size="sm" 
+                className="w-full"
+                onClick={() => window.location.href = '/don'}
+              >
                 Faire un don
               </Button>
             </div>
