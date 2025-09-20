@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Heart, Menu, X } from "lucide-react";
 import { useState } from "react";
+import logoOngAem from "@/assets/logo-ong-aem.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,7 +20,11 @@ const Header = () => {
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3 group cursor-pointer">
             <div className="relative">
-              <Heart className="h-10 w-10 text-warm-accent animate-glow drop-shadow-lg group-hover:scale-110 transition-transform duration-300" />
+              <img 
+                src={logoOngAem} 
+                alt="Logo ONG-AEM" 
+                className="h-12 w-12 object-contain drop-shadow-lg group-hover:scale-110 transition-transform duration-300 animate-glow"
+              />
               <div className="absolute inset-0 animate-pulse-glow rounded-full opacity-50"></div>
             </div>
             <div>
