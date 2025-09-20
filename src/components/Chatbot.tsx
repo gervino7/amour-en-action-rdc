@@ -134,38 +134,38 @@ const Chatbot = () => {
   return (
     <div className="fixed bottom-6 right-6 z-50">
       <Card className={`bg-white/95 backdrop-blur-xl border-2 border-primary/20 shadow-2xl transition-all duration-500 ${
-        isMinimized ? 'w-72 h-14' : 'w-80 h-96'
+        isMinimized ? 'w-72 h-12' : 'w-80 h-[500px]'
       }`}>
         {/* Header */}
-        <div className="relative bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%] animate-[gradient-x_4s_ease-in-out_infinite] text-white p-4 rounded-t-lg">
+        <div className="relative bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%] animate-[gradient-x_4s_ease-in-out_infinite] text-white p-3 rounded-t-lg">
           <div className="absolute inset-0 bg-black/10 rounded-t-lg"></div>
           <div className="relative flex items-center justify-between">
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-2">
               <div className="relative">
-                <Bot className="h-8 w-8" />
+                <Bot className="h-6 w-6" />
                 <div className="absolute inset-0 animate-ping rounded-full bg-white/30"></div>
               </div>
               <div>
-                <h3 className="font-bold text-lg">Assistant ONG-AEM</h3>
-                <p className="text-sm opacity-90">💬 Toujours là pour vous aider</p>
+                <h3 className="font-bold text-base">Assistant ONG-AEM</h3>
+                <p className="text-xs opacity-90">💬 Ici pour vous aider</p>
               </div>
             </div>
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-1">
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => setIsMinimized(!isMinimized)}
-                className="text-white hover:bg-white/20 p-2"
+                className="text-white hover:bg-white/20 p-1 h-7 w-7"
               >
-                {isMinimized ? <Maximize2 className="h-4 w-4" /> : <Minimize2 className="h-4 w-4" />}
+                {isMinimized ? <Maximize2 className="h-3 w-3" /> : <Minimize2 className="h-3 w-3" />}
               </Button>
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => setIsOpen(false)}
-                className="text-white hover:bg-white/20 p-2"
+                className="text-white hover:bg-white/20 p-1 h-7 w-7"
               >
-                <X className="h-4 w-4" />
+                <X className="h-3 w-3" />
               </Button>
             </div>
           </div>
@@ -174,7 +174,7 @@ const Chatbot = () => {
         {!isMinimized && (
           <>
             {/* Messages */}
-            <CardContent className="p-0 h-72 flex flex-col">
+            <CardContent className="p-0 h-[380px] flex flex-col">
               <ScrollArea className="flex-1 p-4">
                 <div className="space-y-4">
                   {messages.map((message) => (
