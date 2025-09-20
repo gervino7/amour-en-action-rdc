@@ -15,7 +15,7 @@ serve(async (req) => {
   try {
     const { message } = await req.json();
     
-    const openaiApiKey = Deno.env.get('OPENAI_API_KEY');
+    const openaiApiKey = Deno.env.get('ANTHROPIC_API_KEY');
     console.log('OpenAI API Key présente:', !!openaiApiKey);
     console.log('OpenAI API Key longueur:', openaiApiKey?.length);
     console.log('OpenAI API Key début:', openaiApiKey?.substring(0, 10));
