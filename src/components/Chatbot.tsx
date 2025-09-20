@@ -115,18 +115,6 @@ const Chatbot = () => {
           <MessageCircle className="h-8 w-8 relative z-10 group-hover:animate-bounce" />
           <Sparkles className="absolute -top-1 -right-1 h-6 w-6 text-yellow-300 animate-spin" />
         </Button>
-        
-        {/* Floating notification */}
-        <div className="absolute bottom-20 right-0 bg-white rounded-lg shadow-xl p-3 max-w-xs animate-fade-in border border-primary/20">
-          <div className="flex items-start space-x-2">
-            <Bot className="h-5 w-5 text-primary mt-0.5" />
-            <div>
-              <p className="text-sm font-medium text-gray-900">Assistant ONG-AEM</p>
-              <p className="text-xs text-gray-600">Besoin d'aide ? Cliquez pour discuter !</p>
-            </div>
-            <Heart className="h-4 w-4 text-red-500 animate-pulse" />
-          </div>
-        </div>
       </div>
     );
   }

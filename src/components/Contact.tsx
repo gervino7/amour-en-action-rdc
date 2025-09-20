@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { MapPin, Phone, Mail, Instagram, Clock, Globe } from "lucide-react";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const Contact = () => {
   return (
@@ -51,7 +52,8 @@ const Contact = () => {
               </CardHeader>
               <CardContent>
                 <p className="text-lg font-semibold text-primary">+1 438-535-6432</p>
-                <p className="text-sm text-muted-foreground">Mobile - Disponible en tout temps</p>
+                <p className="text-sm text-muted-foreground mb-4">Mobile - Disponible en tout temps</p>
+                <WhatsAppButton />
               </CardContent>
             </Card>
 

@@ -5,7 +5,7 @@ import Actions from "@/components/Actions";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import Chatbot from "@/components/Chatbot";
-import WhatsAppFloat from "@/components/WhatsAppFloat";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const Index = () => {
   return (
@@ -19,7 +19,6 @@ const Index = () => {
       </main>
       <Footer />
       <Chatbot />
-      <WhatsAppFloat />
     </div>
   );
 };
