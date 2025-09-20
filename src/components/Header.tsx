@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Heart, Menu, X } from "lucide-react";
 import { useState } from "react";
-import logoOngAem from "@/assets/logo-ong-aem.png";
+import logoOngAem from "@/assets/logo-ong-aem-real.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
