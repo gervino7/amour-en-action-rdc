@@ -39,16 +39,28 @@ All colors MUST be HSL.
     --input: 214.3 31.8% 91.4%;
     --ring: 220 100% 25%;
 
-    /* Custom ONG design tokens */
-    --hero-gradient: linear-gradient(135deg, hsl(220 100% 25%), hsl(24 95% 53%));
+    /* Custom ONG design tokens - Premium Design System */
+    --hero-gradient: linear-gradient(135deg, hsl(220 100% 15%), hsl(24 95% 53%), hsl(220 100% 25%));
+    --hero-overlay: linear-gradient(135deg, hsl(220 100% 15% / 0.9), hsl(24 95% 53% / 0.8));
     --section-background: 210 40% 98%;
     --warm-accent: 24 95% 53%;
-    --trust-blue: 220 100% 25%;
+    --trust-blue: 220 100% 15%;
+    --trust-blue-light: 220 100% 25%;
     --hope-green: 142 76% 36%;
     --neutral-100: 210 20% 98%;
     --neutral-200: 210 16% 93%;
-    --shadow-elegant: 0 10px 30px -10px hsl(220 100% 25% / 0.1);
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --glass-bg: 255 255 255 / 0.1;
+    --glass-border: 255 255 255 / 0.2;
+    --shadow-elegant: 0 25px 50px -12px hsl(220 100% 15% / 0.25);
+    --shadow-glow: 0 0 40px hsl(24 95% 53% / 0.3);
+    --shadow-card: 0 10px 25px -5px hsl(220 100% 15% / 0.1);
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    
+    /* Advanced Gradients */
+    --gradient-card: linear-gradient(145deg, hsl(var(--card)) 0%, hsl(var(--card)) 100%);
+    --gradient-premium: linear-gradient(135deg, hsl(220 100% 15%), hsl(220 100% 25%), hsl(24 95% 53%));
+    --gradient-text: linear-gradient(135deg, hsl(220 100% 15%), hsl(24 95% 53%));
 
     --radius: 0.5rem;
 
