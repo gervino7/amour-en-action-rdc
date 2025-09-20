@@ -1,4 +1,4 @@
-import { Heart, Instagram, Mail, Phone, MapPin } from "lucide-react";
+import { Heart, Instagram, Facebook, Mail, Phone, MapPin } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -111,6 +111,17 @@ const Footer = () => {
                   className="text-primary-foreground/80 hover:text-accent text-sm transition-colors"
                 >
                   @ongaem_officiel
+                </a>
+              </div>
+              <div className="flex items-center space-x-3">
+                <Facebook className="h-5 w-5 text-accent flex-shrink-0" />
+                <a 
+                  href="https://web.facebook.com/profile.php?id=61565513904370" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-primary-foreground/80 hover:text-accent text-sm transition-colors"
+                >
+                  ONG-AEM Officiel
                 </a>
               </div>
             </div>
