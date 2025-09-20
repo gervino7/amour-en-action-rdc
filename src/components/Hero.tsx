@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Heart } from "lucide-react";
 import heroImage from "@/assets/hero-image.jpg";
-import logoOngAem from "@/assets/logo-ong-aem-real.png";
+import logoOngAem from "@/assets/logo-official.jpg";
 
 const Hero = () => {
   const scrollToSection = (sectionId: string) => {
@@ -36,10 +36,10 @@ const Hero = () => {
             <div className="relative">
               <img 
                 src={logoOngAem} 
-                alt="Logo ONG-AEM" 
-                className="h-24 w-24 object-contain drop-shadow-2xl animate-glow"
+                alt="Logo ONG-AEM - L'Amour en manifestation" 
+                className="h-32 w-auto max-w-md object-contain drop-shadow-2xl animate-glow bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20"
               />
-              <div className="absolute inset-0 animate-pulse-glow rounded-full opacity-50"></div>
+              <div className="absolute inset-0 animate-pulse-glow rounded-2xl opacity-30"></div>
             </div>
           </div>
           
