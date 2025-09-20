@@ -48,38 +48,61 @@ INSTRUCTIONS:
 - Si l'utilisateur veut nous contacter ou avoir des infos de contact: mentionner "contact" dans ta réponse
 - Répondre de manière naturelle en incluant ces mots-clés quand approprié`;
 
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'x-api-key': cleanApiKey,
-        'Content-Type': 'application/json',
-        'anthropic-version': '2023-06-01'
-      },
-      body: JSON.stringify({
-        model: 'claude-3-5-sonnet-20241022',
-        max_tokens: 300,
-        system: systemPrompt,
-        messages: [
-          {
-            role: 'user',
-            content: message
-          }
-        ]
-      })
-    });
+    // Appel Anthropic avec retries + backoff et repli gracieux
+    let botMessage: string | null = null;
+    let lastErrorText = '';
 
-    console.log('Status de la réponse OpenAI:', response.status);
-    console.log('Headers de réponse:', Object.fromEntries(response.headers.entries()));
+    for (let attempt = 1; attempt <= 3; attempt++) {
+      const response = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: {
+          'x-api-key': cleanApiKey,
+          'Content-Type': 'application/json',
+          'anthropic-version': '2023-06-01'
+        },
+        body: JSON.stringify({
+          model: 'claude-3-5-sonnet-20241022',
+          max_tokens: 300,
+          system: systemPrompt,
+          messages: [
+            {
+              role: 'user',
+              content: message
+            }
+          ]
+        })
+      });
 
-    if (!response.ok) {
+      console.log(`Status de la réponse OpenAI (tentative ${attempt}):`, response.status);
+      console.log('Headers de réponse:', Object.fromEntries(response.headers.entries()));
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Données reçues de OpenAI:', JSON.stringify(data, null, 2));
+        botMessage = data.content?.[0]?.text ?? "Je suis à votre écoute. Pour aller plus vite, vous pouvez faire un don (donation) ou demander nos coordonnées (contact).";
+        break;
+      }
+
       const errorText = await response.text();
+      lastErrorText = errorText;
       console.error('Erreur API OpenAI:', errorText);
-      throw new Error(`OpenAI API error: ${errorText}`);
+
+      const shouldRetry = response.status === 529 || response.status >= 500 || response.headers.get('x-should-retry') === 'true';
+      if (shouldRetry && attempt < 3) {
+        const delay = Math.min(1000 * Math.pow(2, attempt - 1) + Math.floor(Math.random() * 200), 4000);
+        console.log(`Retry dans ${delay}ms ...`);
+        await new Promise((r) => setTimeout(r, delay));
+        continue;
+      } else {
+        break;
+      }
     }
 
-    const data = await response.json();
-    console.log('Données reçues de OpenAI:', JSON.stringify(data, null, 2));
-    const botMessage = data.content[0].text;
+    if (!botMessage) {
+      console.warn('Utilisation du message de secours (service surchargé):', lastErrorText);
+      botMessage = "Le service est momentanément indisponible. Vous pouvez tout de suite faire un don (donation) ou nous écrire (contact) sur WhatsApp +2250506803113.";
+    }
+
 
     return new Response(JSON.stringify({ 
       message: botMessage,
