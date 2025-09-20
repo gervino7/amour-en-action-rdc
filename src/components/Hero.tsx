@@ -70,6 +70,7 @@ const Hero = () => {
             <Button 
               size="lg" 
               variant="outline"
+              onClick={() => window.location.href = '/donation'}
               className="bg-warm-accent/20 backdrop-blur-md border-2 border-warm-accent text-white hover:bg-warm-accent hover:text-white transition-all duration-500 hover:scale-105 hover:shadow-2xl px-8 py-4 text-lg font-semibold rounded-full group animate-pulse-glow"
             >
               Faire un don

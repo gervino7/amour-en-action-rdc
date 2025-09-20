@@ -135,6 +135,7 @@ const Actions = () => {
             <Button 
               size="lg" 
               variant="secondary"
+              onClick={() => window.location.href = '/donation'}
               className="bg-white text-primary hover:bg-white/90"
             >
               Faire un don
@@ -143,6 +144,12 @@ const Actions = () => {
             <Button 
               size="lg" 
               variant="outline"
+              onClick={() => {
+                const element = document.getElementById('contact');
+                if (element) {
+                  element.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
               className="border-white text-white hover:bg-white hover:text-primary"
             >
               Devenir bénévole

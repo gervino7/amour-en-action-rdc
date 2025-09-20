@@ -62,7 +62,7 @@ const Header = () => {
             <Button 
               variant="default" 
               size="sm"
-              onClick={() => window.location.href = '/don'}
+              onClick={() => window.location.href = '/donation'}
             >
               Faire un don
             </Button>
@@ -109,7 +109,7 @@ const Header = () => {
                 variant="default" 
                 size="sm" 
                 className="w-full"
-                onClick={() => window.location.href = '/don'}
+                onClick={() => window.location.href = '/donation'}
               >
                 Faire un don
               </Button>
